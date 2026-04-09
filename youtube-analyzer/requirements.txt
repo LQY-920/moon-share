@@ -1,0 +1,10 @@
+# YouTube Video Analyzer 依赖
+
+# 核心依赖
+yt-dlp>=2024.1.0
+
+# API 调用
+requests>=2.31.0
+
+# 配置管理
+python-dotenv>=1.0.0

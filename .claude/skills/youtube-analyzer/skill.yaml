@@ -1,0 +1,56 @@
+name: YouTube Video Analyzer
+description: 解析 YouTube 视频，提取元数据、字幕、音频、缩略图，生成 AI 摘要和关键知识点
+version: "1.0.0"
+
+commands:
+  search:
+    description: 搜索 YouTube 视频
+    usage: /yta search <关键词>
+    examples:
+      - /yta search Claude Code 教程
+      - /yta search Python 编程
+
+  parse:
+    description: 解析指定 YouTube 视频
+    usage: /yta parse <YouTube_URL>
+    examples:
+      - /yta parse https://www.youtube.com/watch?v=xxx
+
+  select:
+    description: 选择视频进行解析
+    usage: /yta select <视频编号>
+    examples:
+      - /yta select 1
+      - /yta select 1,3
+
+  status:
+    description: 查看当前解析状态
+    usage: /yta status
+
+  output:
+    description: 查看上次解析的输出文件
+    usage: /yta output
+
+prompts:
+  - name: analyze_youtube
+    description: 分析一个 YouTube 视频内容
+    prompt: |
+      请分析这个 YouTube 视频：
+
+      视频信息：
+      - 标题：{title}
+      - 时长：{duration}
+      - 观看数：{views}
+      - 发布日期：{publish_date}
+
+      AI 摘要：
+      {summary}
+
+      关键知识点：
+      {key_points}
+
+      请根据以上信息，生成适合以下平台的内容：
+      1. 公众号长文（800-1500字）
+      2. 小红书图文（标题+正文+标签）
+      3. 抖音视频脚本（60秒内）
+      4. 朋友圈推荐语（100字内）
